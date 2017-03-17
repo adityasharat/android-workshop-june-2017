@@ -1,10 +1,10 @@
 package edu.nie.expensemanager.models;
 
 /**
- * Expense
+ * ExpenseSummary
  *
  * @author adityasharat
  */
 
-public class Expense {
+public class ExpenseSummary {
 }

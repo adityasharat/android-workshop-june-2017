@@ -8,10 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.nie.expensemanager.R;
-import edu.nie.expensemanager.models.Expense;
+import edu.nie.expensemanager.models.ExpenseSummary;
 
 /**
  * ExpenseListAdapter
@@ -26,12 +27,16 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
     private static final String ERROR_NULL_EXPENSES = "expenses is null but bind called for position ";
     private static final String ERROR_INVALID_VIEW_TYPE = " is an invalid view type";
 
-
     @Nullable
-    private List<Expense> expenses;
+    private List<ExpenseSummary> expenses;
+
     private LayoutInflater inflater;
 
-    public ExpenseListAdapter() {
+    @NonNull
+    private BrowseExpenseListener listener;
+
+    ExpenseListAdapter(@NonNull BrowseExpenseListener listener) {
+        this.listener = listener;
     }
 
     @Override
@@ -44,10 +49,10 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
 
         switch (type) {
             case TYPE_EXPENSE:
-                holder = ExpenseViewHolder.create(parent, inflater);
+                holder = ExpenseViewHolder.create(parent, inflater, listener);
                 break;
             case TYPE_NO_EXPENSE:
-                holder = EmptyExpenseListViewHolder.create(parent, inflater);
+                holder = EmptyExpenseListViewHolder.create(parent, inflater, listener);
                 break;
             default:
                 throw new IllegalArgumentException(type + ERROR_INVALID_VIEW_TYPE);
@@ -83,53 +88,67 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
         return TYPE_EXPENSE;
     }
 
-    public void setExpenses(@Nullable List<Expense> expenses) {
+    public void setExpenses(@Nullable List<ExpenseSummary> expenses) {
         this.expenses = expenses;
+    }
+
+    public void addExprense(@NonNull ExpenseSummary expense) {
+        if (this.expenses == null) {
+            this.expenses = new ArrayList<>();
+        }
+        this.expenses.add(expense);
     }
 
     static class ExpenseBaseViewHolder extends RecyclerView.ViewHolder {
 
-        ExpenseBaseViewHolder(View view) {
+        @NonNull
+        protected final BrowseExpenseListener listener;
+
+        ExpenseBaseViewHolder(@NonNull View view, @NonNull BrowseExpenseListener listener) {
             super(view);
+            this.listener = listener;
         }
     }
 
-    static class ExpenseViewHolder extends ExpenseBaseViewHolder {
+    private static class ExpenseViewHolder extends ExpenseBaseViewHolder {
 
-        public ExpenseViewHolder(View view) {
-            super(view);
-        }
+        private ExpenseSummary expense;
 
-        static ExpenseViewHolder create(@NonNull ViewGroup parent, @NonNull LayoutInflater inflater) {
-            View view = inflater.inflate(R.layout.expense_list_item, parent, false);
-            return new ExpenseViewHolder(view);
-        }
-
-        private void bind(@Nullable Expense expense) {
-            itemView.setOnClickListener(new View.OnClickListener() {
+        ExpenseViewHolder(@NonNull View view, @NonNull final BrowseExpenseListener listener) {
+            super(view, listener);
+            view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    listener.openExpense(expense);
                 }
             });
         }
-    }
 
-    static class EmptyExpenseListViewHolder extends ExpenseBaseViewHolder {
-
-        EmptyExpenseListViewHolder(@NonNull View view) {
-            super(view);
+        static ExpenseViewHolder create(@NonNull ViewGroup parent, @NonNull LayoutInflater inflater, final @NonNull BrowseExpenseListener listener) {
+            View view = inflater.inflate(R.layout.expense_list_item, parent, false);
+            return new ExpenseViewHolder(view, listener);
         }
 
-        static EmptyExpenseListViewHolder create(@NonNull ViewGroup parent, @NonNull LayoutInflater inflater) {
+        private void bind(@Nullable ExpenseSummary expense) {
+            this.expense = expense;
+        }
+    }
+
+    private static class EmptyExpenseListViewHolder extends ExpenseBaseViewHolder {
+
+        EmptyExpenseListViewHolder(@NonNull View view, @NonNull BrowseExpenseListener listener) {
+            super(view, listener);
+        }
+
+        static EmptyExpenseListViewHolder create(@NonNull ViewGroup parent, @NonNull LayoutInflater inflater, @NonNull final BrowseExpenseListener listener) {
             View view = inflater.inflate(R.layout.no_expenses, parent, false);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    listener.openExpense(null);
                 }
             });
-            return new EmptyExpenseListViewHolder(view);
+            return new EmptyExpenseListViewHolder(view, listener);
         }
     }
 }
