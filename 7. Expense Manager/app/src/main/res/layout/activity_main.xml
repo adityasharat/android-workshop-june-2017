@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.nie.expensemanager.MainActivity">
+    tools:context="edu.nie.expensemanager.browse.BrowseExpenseActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
