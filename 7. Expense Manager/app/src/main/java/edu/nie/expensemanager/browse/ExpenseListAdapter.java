@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.nie.expensemanager.R;
-import edu.nie.expensemanager.models.ExpenseSummary;
+import edu.nie.expensemanager.models.Expense;
 
 /**
  * ExpenseListAdapter
@@ -28,7 +28,7 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
     private static final String ERROR_INVALID_VIEW_TYPE = " is an invalid view type";
 
     @Nullable
-    private List<ExpenseSummary> expenses;
+    private List<Expense> expenses;
 
     private LayoutInflater inflater;
 
@@ -88,11 +88,11 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
         return TYPE_EXPENSE;
     }
 
-    public void setExpenses(@Nullable List<ExpenseSummary> expenses) {
+    public void setExpenses(@Nullable List<Expense> expenses) {
         this.expenses = expenses;
     }
 
-    public void addExprense(@NonNull ExpenseSummary expense) {
+    public void addExprense(@NonNull Expense expense) {
         if (this.expenses == null) {
             this.expenses = new ArrayList<>();
         }
@@ -112,7 +112,7 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
 
     private static class ExpenseViewHolder extends ExpenseBaseViewHolder {
 
-        private ExpenseSummary expense;
+        private Expense expense;
 
         ExpenseViewHolder(@NonNull View view, @NonNull final BrowseExpenseListener listener) {
             super(view, listener);
@@ -129,7 +129,7 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
             return new ExpenseViewHolder(view, listener);
         }
 
-        private void bind(@Nullable ExpenseSummary expense) {
+        private void bind(@Nullable Expense expense) {
             this.expense = expense;
         }
     }

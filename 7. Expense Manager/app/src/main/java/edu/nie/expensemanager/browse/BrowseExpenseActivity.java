@@ -12,7 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import edu.nie.expensemanager.R;
-import edu.nie.expensemanager.models.ExpenseSummary;
+import edu.nie.expensemanager.models.Expense;
 
 public class BrowseExpenseActivity extends AppCompatActivity {
 
@@ -40,7 +40,7 @@ public class BrowseExpenseActivity extends AppCompatActivity {
             final private Snackbar snack = Snackbar.make(recyclerView, "open/create an expense", BaseTransientBottomBar.LENGTH_SHORT);
 
             @Override
-            public void openExpense(@Nullable ExpenseSummary expense) {
+            public void openExpense(@Nullable Expense expense) {
                 snack.show();
             }
 

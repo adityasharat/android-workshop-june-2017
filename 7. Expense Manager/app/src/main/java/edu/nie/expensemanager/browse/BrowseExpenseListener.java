@@ -2,7 +2,7 @@ package edu.nie.expensemanager.browse;
 
 import android.support.annotation.Nullable;
 
-import edu.nie.expensemanager.models.ExpenseSummary;
+import edu.nie.expensemanager.models.Expense;
 
 /**
  * BrowseExpenseListener
@@ -13,10 +13,10 @@ import edu.nie.expensemanager.models.ExpenseSummary;
 public interface BrowseExpenseListener {
 
     /**
-     * This callback is invoked with the {@link ExpenseSummary} to open
+     * This callback is invoked with the {@link Expense} to open
      *
      * @param expense the expense to open
      */
-    void openExpense(@Nullable ExpenseSummary expense);
+    void openExpense(@Nullable Expense expense);
 
 }
