@@ -1,5 +1,7 @@
 package edu.nie.expensemanager.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
 /**
@@ -8,7 +10,7 @@ import android.support.annotation.NonNull;
  * @author adityasharat
  */
 
-public class Expense {
+public class Expense implements Parcelable {
 
     @NonNull
     public final String title;
@@ -25,5 +27,15 @@ public class Expense {
         this.description = description;
         this.amount = amount;
         this.date = date;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
     }
 }

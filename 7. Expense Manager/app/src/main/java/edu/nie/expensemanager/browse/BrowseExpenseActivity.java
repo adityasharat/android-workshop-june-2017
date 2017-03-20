@@ -1,10 +1,9 @@
 package edu.nie.expensemanager.browse;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BaseTransientBottomBar;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import edu.nie.expensemanager.R;
+import edu.nie.expensemanager.editor.ExpenseEditorActivity;
 import edu.nie.expensemanager.models.Expense;
 
 public class BrowseExpenseActivity extends AppCompatActivity {
@@ -36,15 +36,16 @@ public class BrowseExpenseActivity extends AppCompatActivity {
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.expense_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        ExpenseListAdapter adapter = new ExpenseListAdapter(new BrowseExpenseListener() {
-            final private Snackbar snack = Snackbar.make(recyclerView, "open/create an expense", BaseTransientBottomBar.LENGTH_SHORT);
-
+        BrowseExpenseListener listener = new BrowseExpenseListener() {
             @Override
             public void openExpense(@Nullable Expense expense) {
-                snack.show();
+                Intent intent = new Intent(BrowseExpenseActivity.this, ExpenseEditorActivity.class);
+                intent.putExtra(ExpenseEditorActivity.KEY_EXPENSE, expense);
+                startActivity(intent);
             }
+        };
 
-        });
+        ExpenseListAdapter adapter = new ExpenseListAdapter(listener);
         recyclerView.setAdapter(adapter);
     }
 }
