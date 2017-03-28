@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/1. Hello World/1. Hello World.iml" filepath="$PROJECT_DIR$/1. Hello World/1. Hello World.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2. Layout/2. Layout.iml" filepath="$PROJECT_DIR$/2. Layout/2. Layout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/3. Interactions/3. Interactions.iml" filepath="$PROJECT_DIR$/3. Interactions/3. Interactions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/4. Navigation/4. Navigation.iml" filepath="$PROJECT_DIR$/4. Navigation/4. Navigation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/5. Persistence And Data/5. Persistence And Data.iml" filepath="$PROJECT_DIR$/5. Persistence And Data/5. Persistence And Data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/6. AsyncTask And Network/6. AsyncTask And Network.iml" filepath="$PROJECT_DIR$/6. AsyncTask And Network/6. AsyncTask And Network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/7. Expense Manager/7. Expense Manager.iml" filepath="$PROJECT_DIR$/7. Expense Manager/7. Expense Manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nie-android-workshop-apr-17.iml" filepath="$PROJECT_DIR$/nie-android-workshop-apr-17.iml" />
+    </modules>
+  </component>
+</project>
