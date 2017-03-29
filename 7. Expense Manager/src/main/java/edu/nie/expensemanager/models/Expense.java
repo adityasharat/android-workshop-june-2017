@@ -1,8 +1,11 @@
 package edu.nie.expensemanager.models;
 
+import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
+
+import edu.nie.expensemanager.provider.ExpenseProvider;
 
 /**
  * Expense

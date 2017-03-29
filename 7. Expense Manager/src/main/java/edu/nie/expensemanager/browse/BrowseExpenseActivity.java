@@ -1,6 +1,10 @@
 package edu.nie.expensemanager.browse;
 
+import android.app.LoaderManager;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.Loader;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -13,8 +17,11 @@ import android.view.View;
 import edu.nie.expensemanager.R;
 import edu.nie.expensemanager.editor.ExpenseEditorActivity;
 import edu.nie.expensemanager.models.Expense;
+import edu.nie.expensemanager.provider.ExpenseProvider;
 
-public class BrowseExpenseActivity extends AppCompatActivity {
+public class BrowseExpenseActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+
+    private ExpenseListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +52,22 @@ public class BrowseExpenseActivity extends AppCompatActivity {
             }
         };
 
-        ExpenseListAdapter adapter = new ExpenseListAdapter(listener);
+        adapter = new ExpenseListAdapter(listener);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return new CursorLoader(this, ExpenseProvider.Constants.QUERY_URI, null, null, null, null);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        adapter.setExpenses(data);
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
     }
 }

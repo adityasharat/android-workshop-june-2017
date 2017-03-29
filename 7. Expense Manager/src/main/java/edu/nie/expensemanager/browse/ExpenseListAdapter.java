@@ -1,6 +1,7 @@
 package edu.nie.expensemanager.browse;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -8,11 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import edu.nie.expensemanager.R;
 import edu.nie.expensemanager.models.Expense;
+import edu.nie.expensemanager.provider.ExpenseProvider;
 
 /**
  * ExpenseListAdapter
@@ -28,7 +27,7 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
     private static final String ERROR_INVALID_VIEW_TYPE = " is an invalid view type";
 
     @Nullable
-    private List<Expense> expenses;
+    private Cursor expenses;
 
     private LayoutInflater inflater;
 
@@ -65,7 +64,8 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
     public void onBindViewHolder(ExpenseBaseViewHolder holder, int position) {
         if (holder instanceof ExpenseViewHolder) {
             if (expenses != null) {
-                ((ExpenseViewHolder) holder).bind(expenses.get(position));
+                expenses.moveToPosition(position);
+                ((ExpenseViewHolder) holder).bind(ExpenseProvider.from(expenses));
             } else {
                 throw new IllegalStateException(ERROR_NULL_EXPENSES + position);
             }
@@ -74,29 +74,23 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
 
     @Override
     public int getItemCount() {
-        if (expenses == null || expenses.size() == 0) {
+        if (expenses == null || expenses.getCount() == 0) {
             return 1;
         }
-        return expenses.size();
+        return expenses.getCount();
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (expenses == null || expenses.size() == 0) {
+        if (expenses == null || expenses.getCount() == 0) {
             return TYPE_NO_EXPENSE;
         }
         return TYPE_EXPENSE;
     }
 
-    public void setExpenses(@Nullable List<Expense> expenses) {
+    public void setExpenses(@Nullable Cursor expenses) {
         this.expenses = expenses;
-    }
-
-    public void addExprense(@NonNull Expense expense) {
-        if (this.expenses == null) {
-            this.expenses = new ArrayList<>();
-        }
-        this.expenses.add(expense);
+        notifyDataSetChanged();
     }
 
     static class ExpenseBaseViewHolder extends RecyclerView.ViewHolder {
