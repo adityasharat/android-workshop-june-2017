@@ -4,7 +4,19 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/1. Hello World" />
+            <option value="$PROJECT_DIR$/2. Layout" />
+            <option value="$PROJECT_DIR$/3. Interactions" />
+            <option value="$PROJECT_DIR$/4. Navigation" />
+            <option value="$PROJECT_DIR$/5. Persistence And Data" />
+            <option value="$PROJECT_DIR$/6. AsyncTask And Network" />
+            <option value="$PROJECT_DIR$/7. Expense Manager" />
+          </set>
+        </option>
         <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
