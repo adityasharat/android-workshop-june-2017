@@ -58,7 +58,7 @@ public class BrowseExpenseActivity extends AppCompatActivity implements LoaderMa
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return new CursorLoader(this, ExpenseProvider.Constants.QUERY_URI, null, null, null, null);
+        return new CursorLoader(this, ExpenseProvider.QUERY_URI, null, null, null, null);
     }
 
     @Override

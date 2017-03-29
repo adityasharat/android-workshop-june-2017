@@ -17,17 +17,26 @@ import edu.nie.expensemanager.models.Expense;
 
 public class ExpenseProvider extends ContentProvider {
 
+    public static final Uri QUERY_URI;
+
+    static {
+        QUERY_URI = new Uri.Builder().path("/expenses").build();
+    }
+
+    private ExpenseProviderHelper helper;
+
     public static Expense from(Cursor cursor) {
-        String title = cursor.getString(ExpenseProvider.Constants.TITLE);
-        String description = cursor.getString(ExpenseProvider.Constants.DESCRIPTION);
-        double amount = cursor.getDouble(ExpenseProvider.Constants.AMOUNT);
-        long date = cursor.getLong(ExpenseProvider.Constants.AMOUNT);
+        String title = cursor.getString(Constants.INDEX_TITLE);
+        String description = cursor.getString(Constants.INDEX_DESCRIPTION);
+        double amount = cursor.getDouble(Constants.INDEX_AMOUNT);
+        long date = cursor.getLong(Constants.INDEX_DATE);
 
         return new Expense(title, description, amount, date);
     }
 
     @Override
     public boolean onCreate() {
+        helper = new ExpenseProviderHelper(getContext());
         return true;
     }
 
@@ -60,18 +69,4 @@ public class ExpenseProvider extends ContentProvider {
         return 0;
     }
 
-    public static final class Constants {
-
-        public static final Uri QUERY_URI;
-
-        public static final int TITLE = 1;
-        public static final int DESCRIPTION = 2;
-        public static final int AMOUNT = 3;
-        public static final int DATE = 4;
-
-        static {
-            QUERY_URI = new Uri.Builder().path("/expenses").build();
-        }
-
-    }
 }
