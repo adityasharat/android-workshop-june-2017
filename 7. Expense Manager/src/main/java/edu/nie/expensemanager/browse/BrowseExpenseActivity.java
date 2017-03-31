@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import edu.nie.expensemanager.R;
+import edu.nie.expensemanager.database.DBHelper;
 import edu.nie.expensemanager.editor.ExpenseEditorActivity;
 import edu.nie.expensemanager.models.Expense;
 import edu.nie.expensemanager.provider.ExpenseProvider;
@@ -36,7 +37,7 @@ public class BrowseExpenseActivity extends AppCompatActivity implements LoaderMa
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startExpenseEditor();
             }
         });
 
@@ -47,13 +48,25 @@ public class BrowseExpenseActivity extends AppCompatActivity implements LoaderMa
             @Override
             public void openExpense(@Nullable Expense expense) {
                 Intent intent = new Intent(BrowseExpenseActivity.this, ExpenseEditorActivity.class);
-                intent.putExtra(ExpenseEditorActivity.KEY_EXPENSE, expense);
+                intent.putExtra(ExpenseEditorActivity.KEY_EXPENSE, expense.getId());
                 startActivity(intent);
             }
         };
 
         adapter = new ExpenseListAdapter(listener);
+        recyclerView.addItemDecoration(new VerticalSpace(5));
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.setExpenseList(DBHelper.getAllExpense(this));
+    }
+
+    private void startExpenseEditor() {
+        Intent intent = new Intent(BrowseExpenseActivity.this, ExpenseEditorActivity.class);
+        startActivity(intent);
     }
 
     @Override

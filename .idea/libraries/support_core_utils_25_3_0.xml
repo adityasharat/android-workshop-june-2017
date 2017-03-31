@@ -1,12 +1,27 @@
 <component name="libraryTable">
   <library name="support-core-utils-25.3.0">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.android/build-cache/8abdb51dab2da06ff7ef1f114791534f986285ea/output/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/8abdb51dab2da06ff7ef1f114791534f986285ea/output/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/8abdb51dab2da06ff7ef1f114791534f986285ea/output/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/8abdb51dab2da06ff7ef1f114791534f986285ea/output/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/8abdb51dab2da06ff7ef1f114791534f986285ea/output/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/8abdb51dab2da06ff7ef1f114791534f986285ea/output/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/8abdb51dab2da06ff7ef1f114791534f986285ea/output/annotations.zip!/" />
+    </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.android/build-cache/aeddd15628496566f8b1d7f9e7310e17e15ab12d/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/aeddd15628496566f8b1d7f9e7310e17e15ab12d/output/res" />
+      <root url="file://$USER_HOME$/.android/build-cache/8abdb51dab2da06ff7ef1f114791534f986285ea/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/8abdb51dab2da06ff7ef1f114791534f986285ea/output/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/support-core-utils/25.3.0/support-core-utils-25.3.0-sources.jar!/" />
+      <root url="jar://D:/Android SDK/sdk/extras/android/m2repository/com/android/support/support-core-utils/25.3.0/support-core-utils-25.3.0-sources.jar!/" />
+      <root url="jar://D:/Android SDK/sdk/extras/android/m2repository/com/android/support/support-core-utils/25.3.0/support-core-utils-25.3.0-sources.jar!/" />
+      <root url="jar://D:/Android SDK/sdk/extras/android/m2repository/com/android/support/support-core-utils/25.3.0/support-core-utils-25.3.0-sources.jar!/" />
+      <root url="jar://D:/Android SDK/sdk/extras/android/m2repository/com/android/support/support-core-utils/25.3.0/support-core-utils-25.3.0-sources.jar!/" />
+      <root url="jar://D:/Android SDK/sdk/extras/android/m2repository/com/android/support/support-core-utils/25.3.0/support-core-utils-25.3.0-sources.jar!/" />
+      <root url="jar://D:/Android SDK/sdk/extras/android/m2repository/com/android/support/support-core-utils/25.3.0/support-core-utils-25.3.0-sources.jar!/" />
+      <root url="jar://D:/Android SDK/sdk/extras/android/m2repository/com/android/support/support-core-utils/25.3.0/support-core-utils-25.3.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

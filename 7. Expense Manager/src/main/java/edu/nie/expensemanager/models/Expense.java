@@ -7,23 +7,30 @@ import android.support.annotation.NonNull;
 
 import edu.nie.expensemanager.provider.ExpenseProvider;
 
+import com.turbomanage.storm.api.Entity;
+
 /**
  * Expense
  *
  * @author adityasharat
  */
+@Entity
+public class Expense {
 
-public class Expense implements Parcelable {
+    private long id;
 
     @NonNull
-    public final String title;
+    public String title;
 
     @NonNull
-    public final String description;
+    public String description;
 
-    public final double amount;
+    public double amount;
 
-    public final long date;
+    public long date;
+
+    public Expense() {
+    }
 
     public Expense(@NonNull String title, @NonNull String description, double amount, long date) {
         this.title = title;
@@ -32,13 +39,45 @@ public class Expense implements Parcelable {
         this.date = date;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public long getId() {
+        return id;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void setId(long id) {
+        this.id = id;
+    }
 
+    @NonNull
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(@NonNull String title) {
+        this.title = title;
+    }
+
+    @NonNull
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(@NonNull String description) {
+        this.description = description;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public long getDate() {
+        return date;
+    }
+
+    public void setDate(long date) {
+        this.date = date;
     }
 }

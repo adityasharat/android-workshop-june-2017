@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 25
@@ -27,5 +28,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
     compile 'com.android.support:design:25.3.0'
+    apt 'com.turbomanage.storm:storm-impl:0.98'
+    compile 'javax.persistence:persistence-api:1.0'
+    compile 'com.turbomanage.storm:storm-api:0.98'
     testCompile 'junit:junit:4.12'
 }
