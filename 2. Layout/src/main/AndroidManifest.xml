@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".BasicActivity"/>
+        <activity android:name=".LinearLayoutHorizontal" />
+        <activity android:name=".LinearLayoutVertical" />
+        <activity android:name=".RelativeLayoutSample" />
     </application>
 
 </manifest>
