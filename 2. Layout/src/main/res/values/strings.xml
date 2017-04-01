@@ -10,4 +10,5 @@
     <string name="date">Select Date</string>
     <string name="enterDescription">Enter a description</string>
     <string name="amount">Amount</string>
+    <string name="openlv">Open List View</string>
 </resources>

@@ -20,6 +20,7 @@
         <activity android:name=".LinearLayoutHorizontal" />
         <activity android:name=".LinearLayoutVertical" />
         <activity android:name=".RelativeLayoutSample" />
+        <activity android:name=".ListViewSample"/>
     </application>
 
 </manifest>
