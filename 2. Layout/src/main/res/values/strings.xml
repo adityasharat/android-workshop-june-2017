@@ -4,4 +4,10 @@
     <string name="openll">Open LL Horizontal</string>
     <string name="openllv">Open LL Vertical</string>
     <string name="openrl">Open Relative Layout</string>
+    <string name="title">Title</string>
+    <string name="enterTitle">Enter title</string>
+    <string name="description">Description</string>
+    <string name="date">Select Date</string>
+    <string name="enterDescription">Enter a description</string>
+    <string name="amount">Amount</string>
 </resources>
