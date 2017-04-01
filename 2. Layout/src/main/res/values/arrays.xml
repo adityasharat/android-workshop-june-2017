@@ -11,4 +11,14 @@
         <item>Uranus</item>
         <item>Neptune</item>
     </string-array>
+
+    <string-array name="currency">
+        <item>USD</item>
+        <item>INR</item>
+        <item>GBP</item>
+        <item>EUR</item>
+        <item>AUD</item>
+        <item>AED</item>
+    </string-array>
+
 </resources>
