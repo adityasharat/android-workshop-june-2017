@@ -1,11 +1,6 @@
 package edu.nie.expensemanager.models;
 
-import android.database.Cursor;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
-
-import edu.nie.expensemanager.provider.ExpenseProvider;
 
 import com.turbomanage.storm.api.Entity;
 
@@ -17,17 +12,15 @@ import com.turbomanage.storm.api.Entity;
 @Entity
 public class Expense {
 
-    private long id;
-
-    @NonNull
     public String title;
 
-    @NonNull
     public String description;
 
     public double amount;
 
     public long date;
+
+    private long id;
 
     public Expense() {
     }
@@ -47,7 +40,6 @@ public class Expense {
         this.id = id;
     }
 
-    @NonNull
     public String getTitle() {
         return title;
     }
@@ -56,7 +48,6 @@ public class Expense {
         this.title = title;
     }
 
-    @NonNull
     public String getDescription() {
         return description;
     }

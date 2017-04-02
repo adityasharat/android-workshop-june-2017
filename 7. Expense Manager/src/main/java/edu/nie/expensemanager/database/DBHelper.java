@@ -12,31 +12,31 @@ import edu.nie.expensemanager.models.dao.ExpenseDao;
  */
 
 public class DBHelper {
-    public static boolean saveExpense(Context context, Expense expense){
+    public static boolean saveExpense(Context context, Expense expense) {
         ExpenseDao expenseDao = new ExpenseDao(context);
         long id = expenseDao.insert(expense);
-        if(id>0){
+        if (id > 0) {
             return true;
         }
         return false;
     }
 
-    public static boolean update(Context context, Expense expense){
+    public static boolean update(Context context, Expense expense) {
         ExpenseDao expenseDao = new ExpenseDao(context);
         long id = expenseDao.update(expense);
-        if(id>0){
+        if (id > 0) {
             return true;
         }
         return false;
     }
 
-    public static Expense getExpense(Context context, long id){
+    public static Expense getExpense(Context context, long id) {
         ExpenseDao expenseDao = new ExpenseDao(context);
         Expense expense = expenseDao.get(id);
         return expense;
     }
 
-    public static void deleteExpense(Context context, long id){
+    public static void deleteExpense(Context context, long id) {
         ExpenseDao expenseDao = new ExpenseDao(context);
         expenseDao.delete(id);
     }
