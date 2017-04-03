@@ -1,7 +1,13 @@
 package edu.nie.expensemanager.editor;
 
 import android.app.DatePickerDialog;
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -15,6 +21,8 @@ import java.util.Calendar;
 
 import edu.nie.expensemanager.R;
 import edu.nie.expensemanager.models.Expense;
+import edu.nie.expensemanager.provider.ExpenseProvider;
+import edu.nie.expensemanager.provider.ExpenseProviderConstants;
 import edu.nie.expensemanager.utility.Utils;
 
 public class ExpenseEditorActivity extends AppCompatActivity {
@@ -26,7 +34,7 @@ public class ExpenseEditorActivity extends AppCompatActivity {
     EditText dateView;
     EditText titleView;
 
-    private long id;
+    private long id = Expense.NO_ID;
     private boolean isEditFlow;
 
     @Override
@@ -47,21 +55,48 @@ public class ExpenseEditorActivity extends AppCompatActivity {
         long time = System.currentTimeMillis();
         dateView.setText(Utils.toDateString(time, null));
         dateView.setTag(time);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         if (id != Expense.NO_ID) {
             isEditFlow = true;
-            // TODO: read expense
-            Expense expense = new Expense(-1, "", "", 0, System.currentTimeMillis());
             setTitle("Edit Expense");
-            setUpExpense(expense);
+            load(id);
         }
     }
 
-    private void setUpExpense(Expense expense) {
-        titleView.setText(expense.title);
-        descriptionView.setText(expense.description);
-        amountView.setText(String.valueOf(expense.amount));
-        dateView.setText(Utils.toDateString(expense.date, null));
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putLong(KEY_EXPENSE, id);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState != null) {
+            id = savedInstanceState.getLong(KEY_EXPENSE);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.delete_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) throws IllegalArgumentException {
+        switch (item.getItemId()) {
+            case R.id.delete:
+                // TODO: delete expense
+                Toast.makeText(this, "Expense deleted", Toast.LENGTH_LONG).show();
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void onDateSelect(View v) {
@@ -83,24 +118,6 @@ public class ExpenseEditorActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.delete_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) throws IllegalArgumentException {
-        switch (item.getItemId()) {
-            case R.id.delete:
-                // TODO: delete expense
-                Toast.makeText(this, "Expense deleted", Toast.LENGTH_LONG).show();
-                this.finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     public void onAddExpense(View v) {
         if (amountView.getText().toString().trim().length() == 0) {
             amountView.setError("Amount can't be empty");
@@ -118,10 +135,53 @@ public class ExpenseEditorActivity extends AppCompatActivity {
         } else {
             expense = new Expense(title, description, amount, date);
         }
+        save(expense);
+    }
 
-        //TODO: write expense
+    private void load(final long id) {
+        new AsyncTask<Context, Void, Cursor>() {
 
-        Toast.makeText(this, R.string.expense_saved_msg, Toast.LENGTH_LONG).show();
-        this.finish();
+            @Override
+            protected Cursor doInBackground(Context... params) {
+                return params[0].getContentResolver().query(ExpenseProviderConstants.build(id), null, null, null, null);
+            }
+
+            @Override
+            protected void onPostExecute(Cursor cursor) {
+                super.onPostExecute(cursor);
+                cursor.moveToFirst();
+                setExpense(ExpenseProvider.from(cursor));
+            }
+        }.execute(this);
+    }
+
+    private void save(@NonNull final Expense expense) {
+        new AsyncTask<Context, Void, Void>() {
+            @Override
+            protected Void doInBackground(Context... params) {
+                ContentResolver resolver = params[0].getContentResolver();
+                ContentValues values = new ContentValues();
+                values.put(ExpenseProviderConstants.TITLE, expense.title);
+                values.put(ExpenseProviderConstants.DESCRIPTION, expense.description);
+                values.put(ExpenseProviderConstants.AMOUNT, expense.amount);
+                values.put(ExpenseProviderConstants.DATE, expense.date);
+                resolver.insert(ExpenseProviderConstants.EXPENSE_URI, values);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                Toast.makeText(ExpenseEditorActivity.this, R.string.expense_saved_msg, Toast.LENGTH_LONG).show();
+                ExpenseEditorActivity.this.finish();
+            }
+        }.execute(this);
+    }
+
+    private void setExpense(@NonNull Expense expense) {
+        titleView.setText(expense.title);
+        descriptionView.setText(expense.description);
+        amountView.setText(String.valueOf(expense.amount));
+        dateView.setText(Utils.toDateString(expense.date, null));
     }
 }

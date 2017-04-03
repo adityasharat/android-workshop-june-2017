@@ -1,10 +1,9 @@
 package edu.nie.expensemanager.browse;
 
-import android.app.LoaderManager;
-import android.content.CursorLoader;
+import android.content.Context;
 import android.content.Intent;
-import android.content.Loader;
 import android.database.Cursor;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -17,9 +16,9 @@ import android.view.View;
 import edu.nie.expensemanager.R;
 import edu.nie.expensemanager.editor.ExpenseEditorActivity;
 import edu.nie.expensemanager.models.Expense;
-import edu.nie.expensemanager.provider.ExpenseProvider;
+import edu.nie.expensemanager.provider.ExpenseProviderConstants;
 
-public class BrowseExpenseActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class BrowseExpenseActivity extends AppCompatActivity {
 
     private ExpenseListAdapter adapter;
 
@@ -36,7 +35,7 @@ public class BrowseExpenseActivity extends AppCompatActivity implements LoaderMa
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startExpenseEditor();
+                openExpenseEditor();
             }
         });
 
@@ -57,23 +56,30 @@ public class BrowseExpenseActivity extends AppCompatActivity implements LoaderMa
         recyclerView.setAdapter(adapter);
     }
 
-    private void startExpenseEditor() {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        load(adapter);
+    }
+
+    private void openExpenseEditor() {
         Intent intent = new Intent(BrowseExpenseActivity.this, ExpenseEditorActivity.class);
         startActivity(intent);
     }
 
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return new CursorLoader(this, ExpenseProvider.QUERY_URI, null, null, null, null);
-    }
+    private void load(final ExpenseListAdapter adapter) {
+        new AsyncTask<Context, Void, Cursor>() {
 
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        adapter.setExpenses(data);
-    }
+            @Override
+            protected Cursor doInBackground(Context... params) {
+                return params[0].getContentResolver().query(ExpenseProviderConstants.EXPENSE_URI, null, null, null, null);
+            }
 
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-
+            @Override
+            protected void onPostExecute(Cursor expenses) {
+                super.onPostExecute(expenses);
+                adapter.setExpenses(expenses);
+            }
+        }.execute(this);
     }
 }
