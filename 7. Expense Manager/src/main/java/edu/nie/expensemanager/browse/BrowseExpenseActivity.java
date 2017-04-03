@@ -1,6 +1,10 @@
 package edu.nie.expensemanager.browse;
 
+import android.app.LoaderManager;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.Loader;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -14,8 +18,9 @@ import edu.nie.expensemanager.R;
 import edu.nie.expensemanager.database.DBHelper;
 import edu.nie.expensemanager.editor.ExpenseEditorActivity;
 import edu.nie.expensemanager.models.Expense;
+import edu.nie.expensemanager.provider.ExpenseProvider;
 
-public class BrowseExpenseActivity extends AppCompatActivity {
+public class BrowseExpenseActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private ExpenseListAdapter adapter;
 
@@ -32,7 +37,7 @@ public class BrowseExpenseActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openExpenseEditor(null);
+                startExpenseEditor();
             }
         });
 
@@ -42,7 +47,9 @@ public class BrowseExpenseActivity extends AppCompatActivity {
         BrowseExpenseListener listener = new BrowseExpenseListener() {
             @Override
             public void openExpense(@Nullable Expense expense) {
-                openExpenseEditor(expense);
+                Intent intent = new Intent(BrowseExpenseActivity.this, ExpenseEditorActivity.class);
+                intent.putExtra(ExpenseEditorActivity.KEY_EXPENSE, expense.getId());
+                startActivity(intent);
             }
         };
 
@@ -54,12 +61,26 @@ public class BrowseExpenseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        adapter.setExpenses(DBHelper.getAllExpense(this));
+        adapter.setExpenseList(DBHelper.getAllExpense(this));
     }
 
-    private void openExpenseEditor(@Nullable Expense expense) {
+    private void startExpenseEditor() {
         Intent intent = new Intent(BrowseExpenseActivity.this, ExpenseEditorActivity.class);
-        intent.putExtra(ExpenseEditorActivity.KEY_EXPENSE, expense != null ? expense.getId() : -1);
         startActivity(intent);
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return new CursorLoader(this, ExpenseProvider.QUERY_URI, null, null, null, null);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        adapter.setExpenses(data);
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
     }
 }

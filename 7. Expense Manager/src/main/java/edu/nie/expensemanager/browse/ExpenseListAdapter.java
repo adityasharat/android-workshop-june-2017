@@ -1,6 +1,7 @@
 package edu.nie.expensemanager.browse;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -9,10 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import edu.nie.expensemanager.R;
 import edu.nie.expensemanager.models.Expense;
+import edu.nie.expensemanager.provider.ExpenseProvider;
 import edu.nie.expensemanager.utility.Utils;
 
 /**
@@ -27,9 +31,10 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
     private static final int TYPE_NO_EXPENSE = 1;
     private static final String ERROR_NULL_EXPENSES = "expenses is null but bind called for position ";
     private static final String ERROR_INVALID_VIEW_TYPE = " is an invalid view type";
+    private List<Expense> expenseList;
 
     @Nullable
-    private List<Expense> expenses;
+    private Cursor expenses;
 
     private LayoutInflater inflater;
 
@@ -38,6 +43,11 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
 
     ExpenseListAdapter(@NonNull BrowseExpenseListener listener) {
         this.listener = listener;
+    }
+
+    public void setExpenseList(List<Expense> expenseList){
+        this.expenseList = expenseList;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -65,31 +75,39 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
     @Override
     public void onBindViewHolder(ExpenseBaseViewHolder holder, int position) {
         if (holder instanceof ExpenseViewHolder) {
-            if (expenses != null) {
-                ((ExpenseViewHolder) holder).bind(expenses.get(position));
+            /*if (expenses != null) {
+                expenses.moveToPosition(position);
+                ((ExpenseViewHolder) holder).bind(ExpenseProvider.from(expenses));
             } else {
                 throw new IllegalStateException(ERROR_NULL_EXPENSES + position);
-            }
+            }*/
+            ((ExpenseViewHolder) holder).bind(expenseList.get(position));
         }
     }
 
     @Override
     public int getItemCount() {
-        if (expenses == null || expenses.size() == 0) {
+        /*if (expenses == null || expenses.getCount() == 0) {
+            return 1;
+        }*/
+        if (expenseList == null || expenseList.size() == 0) {
             return 1;
         }
-        return expenses.size();
+        return expenseList.size();
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (expenses == null || expenses.size() == 0) {
+        /*if (expenses == null || expenses.getCount() == 0) {
+            return TYPE_NO_EXPENSE;
+        }*/
+        if (expenseList == null || expenseList.size() == 0) {
             return TYPE_NO_EXPENSE;
         }
         return TYPE_EXPENSE;
     }
 
-    public void setExpenses(@Nullable List<Expense> expenses) {
+    public void setExpenses(@Nullable Cursor expenses) {
         this.expenses = expenses;
         notifyDataSetChanged();
     }
@@ -107,15 +125,9 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
 
     private static class ExpenseViewHolder extends ExpenseBaseViewHolder {
 
-        @NonNull
-        private TextView desc;
-
-        @NonNull
-        private TextView amt;
-
-        @NonNull
-        private TextView date;
-
+        private static TextView expenseDescription;
+        private static TextView expenseAmount;
+        private static TextView expenseDate;
         private Expense expense;
 
         ExpenseViewHolder(@NonNull View view, @NonNull final BrowseExpenseListener listener) {
@@ -126,21 +138,21 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
                     listener.openExpense(expense);
                 }
             });
-            desc = (TextView) view.findViewById(R.id.expense_description);
-            amt = (TextView) view.findViewById(R.id.expense_amount);
-            date = (TextView) view.findViewById(R.id.expense_date);
         }
 
         static ExpenseViewHolder create(@NonNull ViewGroup parent, @NonNull LayoutInflater inflater, final @NonNull BrowseExpenseListener listener) {
             View view = inflater.inflate(R.layout.expense_list_item, parent, false);
+            expenseDescription = (TextView) view.findViewById(R.id.expense_description);
+            expenseAmount = (TextView) view.findViewById(R.id.expense_amount);
+            expenseDate = (TextView) view.findViewById(R.id.expense_date);
             return new ExpenseViewHolder(view, listener);
         }
 
-        private void bind(@NonNull Expense expense) {
+        private void bind(@Nullable Expense expense) {
             this.expense = expense;
-            desc.setText(expense.getDescription());
-            amt.setText(String.valueOf(expense.getAmount()));
-            date.setText(Utils.toDateString(expense.getDate(), null));
+            expenseDescription.setText(expense.getDescription());
+            expenseAmount.setText(expense.getAmount()+"");
+            expenseDate.setText(Utils.getDateString(expense.getDate()));
         }
     }
 

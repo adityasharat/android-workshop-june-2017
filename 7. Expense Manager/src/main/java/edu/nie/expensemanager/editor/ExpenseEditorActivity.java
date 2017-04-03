@@ -1,10 +1,12 @@
 package edu.nie.expensemanager.editor;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
@@ -40,14 +42,12 @@ public class ExpenseEditorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_expense_editor);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         id = getIntent().getLongExtra(KEY_EXPENSE, -1);
         date = (EditText) findViewById(R.id.date);
         title = (EditText) findViewById(R.id.title);
         amount = (EditText) findViewById(R.id.amount);
         description = (EditText) findViewById(R.id.description);
-
-        if (id != -1) {
+        if(id != -1){
             isEditFlow = true;
             setTitle("Edit Expense");
             expense = DBHelper.getExpense(this, id);
@@ -55,14 +55,14 @@ public class ExpenseEditorActivity extends AppCompatActivity {
         }
     }
 
-    private void setUpExpense(Expense expense) {
-        date.setText(Utils.toDateString(expense.getDate(), null));
+    private void setUpExpense(Expense expense){
+        date.setText(Utils.getDateString(expense.getDate()));
         description.setText(expense.getDescription());
         title.setText(expense.getTitle());
         amount.setText(String.valueOf(expense.getAmount()));
     }
 
-    public void onDateSelect(View v) {
+    public void onDateSelect(View v){
         final Calendar c = Calendar.getInstance();
         int mYear = c.get(Calendar.YEAR); // current year
         int mMonth = c.get(Calendar.MONTH); // current month
@@ -101,21 +101,21 @@ public class ExpenseEditorActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onAddExpense(View v) {
-        if (amount.getText().toString().trim().length() == 0) {
+    public void onAddExpense(View v){
+        if(amount.getText().toString().trim().length()==0){
             amount.setError("Amount can't be empty");
             return;
         }
-        if (date.getText().toString().trim().length() == 0) {
+        if(date.getText().toString().trim().length()==0){
             date.setError("Date can't be empty");
             return;
         }
-        if (description.getText().toString().trim().length() == 0) {
-            description.setError("Description can't be empty.");
+        if(description.getText().toString().trim().length()==0){
+            description.setError("Descitpion cen't be empty");
             return;
         }
         Expense expense = new Expense();
-        if (isEditFlow) {
+        if(isEditFlow){
             expense.setId(id);
         }
         expense.setAmount(Double.parseDouble(amount.getText().toString()));
@@ -130,9 +130,9 @@ public class ExpenseEditorActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.oops_msg, Toast.LENGTH_LONG).show();
             return;
         }
-        if (isEditFlow) {
+        if(isEditFlow){
             DBHelper.update(this, expense);
-        } else {
+        }else {
             DBHelper.saveExpense(this, expense);
         }
         Toast.makeText(this, R.string.expense_saved_msg, Toast.LENGTH_LONG).show();
