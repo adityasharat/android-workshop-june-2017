@@ -44,12 +44,13 @@ public class ExpenseProvider extends ContentProvider {
     private ExpenseProviderHelper helper;
 
     public static Expense from(Cursor cursor) {
+        long id = cursor.getLong(ExpenseProviderConstants.INDEX_ID);
         String title = cursor.getString(ExpenseProviderConstants.INDEX_TITLE);
         String description = cursor.getString(ExpenseProviderConstants.INDEX_DESCRIPTION);
         double amount = cursor.getDouble(ExpenseProviderConstants.INDEX_AMOUNT);
         long date = cursor.getLong(ExpenseProviderConstants.INDEX_DATE);
 
-        return new Expense(title, description, amount, date);
+        return new Expense(id, title, description, amount, date);
     }
 
     @Override

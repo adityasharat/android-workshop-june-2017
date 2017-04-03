@@ -13,6 +13,7 @@ import edu.nie.expensemanager.BuildConfig;
  */
 public final class ExpenseProviderConstants implements BaseColumns {
 
+    public static final int INDEX_ID = 0;
     public static final int INDEX_TITLE = 1;
     public static final int INDEX_DESCRIPTION = 2;
     public static final int INDEX_AMOUNT = 3;

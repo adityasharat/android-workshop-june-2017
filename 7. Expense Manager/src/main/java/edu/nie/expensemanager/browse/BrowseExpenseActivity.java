@@ -35,7 +35,7 @@ public class BrowseExpenseActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openExpenseEditor();
+                openExpenseEditor(null);
             }
         });
 
@@ -45,9 +45,7 @@ public class BrowseExpenseActivity extends AppCompatActivity {
         BrowseExpenseListener listener = new BrowseExpenseListener() {
             @Override
             public void openExpense(@Nullable Expense expense) {
-                Intent intent = new Intent(BrowseExpenseActivity.this, ExpenseEditorActivity.class);
-                intent.putExtra(ExpenseEditorActivity.KEY_EXPENSE, expense != null ? expense.id : Expense.NO_ID);
-                startActivity(intent);
+                openExpenseEditor(expense);
             }
         };
 
@@ -62,8 +60,9 @@ public class BrowseExpenseActivity extends AppCompatActivity {
         load(adapter);
     }
 
-    private void openExpenseEditor() {
+    private void openExpenseEditor(@Nullable Expense expense) {
         Intent intent = new Intent(BrowseExpenseActivity.this, ExpenseEditorActivity.class);
+        intent.putExtra(ExpenseEditorActivity.KEY_EXPENSE, expense != null ? expense.id : Expense.NO_ID);
         startActivity(intent);
     }
 
