@@ -1,17 +1,21 @@
 package edu.nie.expensemanager.utility;
 
+import android.annotation.SuppressLint;
+import android.support.annotation.Nullable;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by nilesh.tiwari on 31-03-2017.
+ * @author nilesh.tiwari
  */
 
 public class Utils {
-    public static String getDateString(long dateLong){
-        Date date=new Date(dateLong);
-        SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yy");
-        String dateText = df2.format(date);
-        return dateText;
+
+    @SuppressLint("SimpleDateFormat")
+    public static String toDateString(long value, @Nullable String format) {
+        Date date = new Date(value);
+        return new SimpleDateFormat(format != null ? format : "d MM yy").format(date);
     }
+
 }

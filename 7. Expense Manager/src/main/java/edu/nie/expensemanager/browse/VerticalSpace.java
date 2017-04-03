@@ -5,20 +5,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 /**
- * Created by nilesh.tiwari on 31-03-2017.
+ * @author nilesh.tiwari
  */
 
 public class VerticalSpace extends RecyclerView.ItemDecoration {
 
-    private final int mVerticalSpaceHeight;
+    private final int bottom;
 
-    public VerticalSpace(int mVerticalSpaceHeight) {
-        this.mVerticalSpaceHeight = mVerticalSpaceHeight;
+    public VerticalSpace(int bottom) {
+        this.bottom = bottom;
     }
 
     @Override
-    public void getItemOffsets(Rect outRect, View view, RecyclerView parent,
-                               RecyclerView.State state) {
-        outRect.bottom = mVerticalSpaceHeight;
+    public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+        outRect.bottom = bottom;
     }
 }
