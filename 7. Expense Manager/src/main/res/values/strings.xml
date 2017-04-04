@@ -4,8 +4,7 @@
     <string name="enter_title">Enter title</string>
     <string name="enter_description">Enter description</string>
     <string name="enter_amount">Enter amount</string>
-    <string name="enter_date">Enter date</string>
-    <string name="select_date"><u>Select date</u></string>
+    <string name="select_date">Select date</string>
     <string name="expense_saved_msg">Expense saved</string>
     <string name="delete">Delete</string>
 </resources>

@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -31,7 +32,7 @@ public class ExpenseEditorActivity extends AppCompatActivity {
 
     EditText descriptionView;
     EditText amountView;
-    EditText dateView;
+    TextView dateView;
     EditText titleView;
 
     private long id = Expense.NO_ID;
@@ -50,7 +51,7 @@ public class ExpenseEditorActivity extends AppCompatActivity {
         titleView = (EditText) findViewById(R.id.title);
         descriptionView = (EditText) findViewById(R.id.description);
         amountView = (EditText) findViewById(R.id.amount);
-        dateView = (EditText) findViewById(R.id.date);
+        dateView = (TextView) findViewById(R.id.date);
 
         long time = System.currentTimeMillis();
         dateView.setText(Utils.toDateString(time, null));
@@ -122,14 +123,19 @@ public class ExpenseEditorActivity extends AppCompatActivity {
     }
 
     public void onAddExpense(View v) {
-        if (amountView.getText().toString().trim().length() == 0) {
+        String title = titleView.getText().toString().trim();
+        if (title.length() == 0) {
+            titleView.setError("Title can't be empty");
+        }
+
+        String string = amountView.getText().toString().trim();
+        if (string.length() == 0) {
             amountView.setError("Amount can't be empty");
             return;
         }
+        String description = descriptionView.getText().toString().trim();
+        double amount = Double.parseDouble(string);
 
-        String title = titleView.getText().toString();
-        String description = descriptionView.getText().toString();
-        double amount = Double.parseDouble(amountView.getText().toString());
         long date = (long) dateView.getTag();
 
         Expense expense;
