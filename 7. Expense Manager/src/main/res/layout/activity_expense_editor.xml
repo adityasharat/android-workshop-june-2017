@@ -38,6 +38,6 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:onClick="onAddExpense"
-        app:srcCompat="@drawable/add" />
+        app:srcCompat="@drawable/save" />
 
 </android.support.design.widget.CoordinatorLayout>
