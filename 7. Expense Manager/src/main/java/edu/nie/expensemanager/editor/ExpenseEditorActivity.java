@@ -88,12 +88,15 @@ public class ExpenseEditorActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) throws IllegalArgumentException {
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.delete:
-                // TODO: delete expense
-                Toast.makeText(this, "Expense deleted", Toast.LENGTH_LONG).show();
-                this.finish();
+                if (isEditFlow) {
+                    delete(id);
+                } else {
+                    Toast.makeText(this, "Expense deleted", Toast.LENGTH_LONG).show();
+                    this.finish();
+                }
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -159,13 +162,20 @@ public class ExpenseEditorActivity extends AppCompatActivity {
         new AsyncTask<Context, Void, Void>() {
             @Override
             protected Void doInBackground(Context... params) {
+
                 ContentResolver resolver = params[0].getContentResolver();
+
                 ContentValues values = new ContentValues();
                 values.put(ExpenseProviderConstants.TITLE, expense.title);
                 values.put(ExpenseProviderConstants.DESCRIPTION, expense.description);
                 values.put(ExpenseProviderConstants.AMOUNT, expense.amount);
                 values.put(ExpenseProviderConstants.DATE, expense.date);
-                resolver.insert(ExpenseProviderConstants.EXPENSE_URI, values);
+
+                if (expense.id == Expense.NO_ID) {
+                    resolver.insert(ExpenseProviderConstants.EXPENSE_URI, values);
+                } else {
+                    resolver.update(ExpenseProviderConstants.build(expense.id), values, null, null);
+                }
                 return null;
             }
 
@@ -173,6 +183,24 @@ public class ExpenseEditorActivity extends AppCompatActivity {
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
                 Toast.makeText(ExpenseEditorActivity.this, R.string.expense_saved_msg, Toast.LENGTH_LONG).show();
+                ExpenseEditorActivity.this.finish();
+            }
+        }.execute(this);
+    }
+
+    private void delete(final long id) {
+        new AsyncTask<Context, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Context... params) {
+                params[0].getContentResolver().delete(ExpenseProviderConstants.build(id), null, null);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                Toast.makeText(ExpenseEditorActivity.this, "Expense deleted", Toast.LENGTH_LONG).show();
                 ExpenseEditorActivity.this.finish();
             }
         }.execute(this);

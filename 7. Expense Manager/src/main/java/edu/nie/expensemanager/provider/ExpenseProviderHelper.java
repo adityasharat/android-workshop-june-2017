@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.NonNull;
 
 /**
  * ExpenseProviderHelper
@@ -50,14 +51,31 @@ public class ExpenseProviderHelper extends SQLiteOpenHelper {
         return db.query(ExpenseProviderConstants.TABLE_NAME, projection, null, null, null, null, "_ID ASC");
     }
 
-    public Cursor query(String id) {
+    public Cursor query(@NonNull String id) {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = ExpenseProviderConstants._ID + " = ?";
         String[] selectionArgs = {id};
         return db.query(ExpenseProviderConstants.TABLE_NAME, projection, selection, selectionArgs, null, null, null);
     }
 
-    public long insert(ContentValues values) {
+    public long insert(@NonNull ContentValues values) {
         return this.getWritableDatabase().insert(ExpenseProviderConstants.TABLE_NAME, null, values);
+    }
+
+    public int delete() {
+        return getWritableDatabase().delete(ExpenseProviderConstants.TABLE_NAME, null, null);
+    }
+
+    public int delete(@NonNull String id) {
+        String whereClause = ExpenseProviderConstants._ID + " = ?";
+        String[] whereArgs = {id};
+        return getWritableDatabase().delete(ExpenseProviderConstants.TABLE_NAME, whereClause, whereArgs);
+    }
+
+    public int update(@NonNull String id, @NonNull ContentValues values) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String whereClause = ExpenseProviderConstants._ID + " = ?";
+        String[] whereArgs = {id};
+        return db.update(ExpenseProviderConstants.TABLE_NAME, values, whereClause, whereArgs);
     }
 }

@@ -16,10 +16,9 @@ import edu.nie.expensemanager.models.Expense;
  *
  * @author adityasharat
  */
-
 public class ExpenseProvider extends ContentProvider {
 
-    // Creates a UriMatcher object.
+    // Creates a UriMatcher.
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
     static {
@@ -95,11 +94,28 @@ public class ExpenseProvider extends ContentProvider {
 
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
-        return 0;
+        switch (sUriMatcher.match(uri)) {
+            // If the incoming URI was for all of expenses
+            case 1:
+                return helper.delete();
+            // If the incoming URI was for a single row
+            case 2:
+                /*
+                 * Because this URI was for a single row, the _ID value part is
+                 * present. Get the last path segment from the URI; this is the _ID value.
+                 * Then, append the value to the WHERE clause for the query
+                 */
+                return helper.delete(uri.getLastPathSegment());
+            default:
+                throw new IllegalArgumentException("invalid uri passed: " + uri.toString());
+        }
     }
 
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
+        if (values != null && sUriMatcher.match(uri) == 2) {
+            return helper.update(uri.getLastPathSegment(), values);
+        }
         return 0;
     }
 
