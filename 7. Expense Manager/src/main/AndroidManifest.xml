@@ -7,9 +7,9 @@
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
@@ -27,7 +27,8 @@
 
         <provider
             android:authorities="edu.nie.expensemanager"
-            android:name="edu.nie.expensemanager.provider.ExpenseProvider"/>
+            android:name="edu.nie.expensemanager.provider.ExpenseProvider"
+            android:exported="false"/>
 
     </application>
 
