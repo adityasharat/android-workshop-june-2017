@@ -2,6 +2,7 @@ package edu.nie.expensemanager.browse;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -109,7 +110,7 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
     private static class ExpenseViewHolder extends ExpenseBaseViewHolder {
 
         @NonNull
-        private TextView desc;
+        private TextView title;
 
         @NonNull
         private TextView amt;
@@ -127,8 +128,9 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
                     listener.openExpense(expense);
                 }
             });
-            desc = (TextView) view.findViewById(R.id.expense_description);
+            title = (TextView) view.findViewById(R.id.expense_title);
             amt = (TextView) view.findViewById(R.id.expense_amount);
+            amt.setTypeface(null, Typeface.BOLD);
             date = (TextView) view.findViewById(R.id.expense_date);
         }
 
@@ -139,8 +141,8 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
 
         private void bind(@NonNull Expense expense) {
             this.expense = expense;
-            desc.setText(expense.description);
-            amt.setText(String.valueOf(expense.amount));
+            title.setText(expense.description);
+            amt.setText("₹ " + String.valueOf((int) expense.amount));
             date.setText(Utils.toDateString(expense.date, null));
         }
     }

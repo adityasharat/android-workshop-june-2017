@@ -50,7 +50,7 @@ public class BrowseExpenseActivity extends AppCompatActivity {
         };
 
         adapter = new ExpenseListAdapter(listener);
-        recyclerView.addItemDecoration(new VerticalSpace(5));
+        recyclerView.addItemDecoration(new VerticalSpace(12));
         recyclerView.setAdapter(adapter);
     }
 
