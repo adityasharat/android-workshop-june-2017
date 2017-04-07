@@ -22,7 +22,7 @@ public class DemoActivity extends AppCompatActivity {
         FrameLayout frame = (FrameLayout) findViewById(R.id.main_frame);
         frame.removeAllViews();
 
-        LayoutInflater inflator = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        frame.addView(inflator.inflate(layout, null));
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        frame.addView(inflater.inflate(layout, null));
     }
 }
