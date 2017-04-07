@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AsyncTask And Network</string>
+    <string name="app_name">6. AsyncTask And Network</string>
     <string name="enter_server_hostname">Enter Server Hostname</string>
     <string name="locahost">http://10.0.2.2:8080/</string>
     <string name="server">Server:</string>

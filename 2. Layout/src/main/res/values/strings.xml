@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Layouts</string>
+    <string name="app_name">2. Layouts</string>
     <string name="linear_layout_desc">Arrange Views in rows or columns</string>
     <string name="table_layout_desc">• Arrange the Views in tabular format\n• Rows are defined with TableRow layout\n• Each view/viewGroup in TableRow acts as column\n• No. of columns in a table will be defined by the row having most no. of columns\n• Width of a column is defined by the column with the widest cell</string>
     <string name="relative_layout_desc">• Arrange Views relative to each other or its parent</string>
