@@ -16,11 +16,24 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".BasicActivity"/>
-        <activity android:name=".LinearLayoutHorizontal" />
-        <activity android:name=".LinearLayoutVertical" />
-        <activity android:name=".RelativeLayoutSample" />
-        <activity android:name=".ListViewSample"/>
+
+        <activity android:name=".demo.DemoActivity"/>
+
+        <activity android:name=".session1.Session1"/>
+        <activity android:name=".session1.DpSpAndPixel"/>
+        <activity android:name=".session1.basic_layouts.BasicLayouts"/>
+        <activity android:name=".session1.basic_layouts.ScrollViewDemo"/>
+        <activity android:name=".session1.basic_layouts.ScrollViewWithListView"/>
+        <activity android:name=".session1.PaddingVsMargin"/>
+
+        <activity android:name=".session2.Session2"/>
+        <activity android:name=".session2.PullToRefresh"/>
+        <activity android:name=".session2.DragAndDrop"/>
+        <activity android:name=".session2.DraggableView"/>
+        <activity android:name=".session2.StickyHeader"/>
+        <activity android:name=".session2.CustomAnimation"/>
+        <activity android:name=".session2.ActivityTransition"/>
+        <activity android:name=".session2.DummyActivity"/>
     </application>
 
 </manifest>

@@ -9,19 +9,27 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="edu.nie.layouts.MainActivity">
+    tools:context=".session1.DpSpAndPixel">
 
     <Button
         style="@style/button"
-        android:text="Session 1"
-        android:onClick="startSession1"
+        android:text="What is screen size?"
+        android:onClick="whatIsScreenSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <Button
         style="@style/button"
-        android:text="Session 2"
-        android:onClick="startSession2"
+        android:text="Dpi - Dots per inch"
+        android:onClick="dpi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <Button
+        style="@style/button"
+        android:text="Sp"
+        android:onClick="sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

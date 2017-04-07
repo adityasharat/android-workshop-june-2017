@@ -8,20 +8,24 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
-    tools:context="edu.nie.layouts.MainActivity">
+    android:orientation="vertical">
 
-    <Button
-        style="@style/button"
-        android:text="Session 1"
-        android:onClick="startSession1"
+    <TextView
+        android:text="@string/sp_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <Button
-        style="@style/button"
-        android:text="Session 2"
-        android:onClick="startSession2"
+    <TextView
+        android:id="@+id/sp_text"
+        android:text="Hello SP"
+        android:textSize="40sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/dp_text"
+        android:text="Hello DP"
+        android:textSize="40dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </LinearLayout>
