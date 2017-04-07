@@ -43,4 +43,8 @@ public class Session1 extends AppCompatActivity {
     public void layoutWeight(View view) {
         Demo.start(this, R.layout.layout_weight);
     }
+
+    public void views(View view) {
+        Demo.start(this, R.layout.view_examples);
+    }
 }

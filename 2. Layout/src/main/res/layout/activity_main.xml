@@ -19,7 +19,7 @@
         android:text="Session 1"/>
 
     <Button
-        style="@style/button"
+        style="@style/button_skip_tutorial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="startSession2"
