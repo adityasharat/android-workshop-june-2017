@@ -2,7 +2,7 @@ include ':1. Hello World'
 include ':2. Layout'
 include ':3. Interactions'
 include ':4. Navigation'
-include ':5. Persistence And Data'
+include ':5. Data And Storage'
 include ':6. AsyncTask And Network'
 include ':7. Expense Manager'
 
