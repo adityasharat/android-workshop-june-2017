@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidUISessions</string>
+    <string name="app_name">Layouts</string>
     <string name="linear_layout_desc">
         • Arrange Views in rows or columns\n
         • By default orientation is horizontal\n

@@ -13,7 +13,7 @@
 
     <Button
         style="@style/button"
-        android:text="DP, SP and Pixel"
+        android:text="px, dp and sp"
         android:onClick="dPSpAndPixel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -40,14 +40,14 @@
         android:layout_height="wrap_content"/>
 
     <Button
-        style="@style/button"
+        style="@style/button_skip_tutorial"
         android:text="Gravity And Layout Gravity"
         android:onClick="gravityAndLayoutGravity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <Button
-        style="@style/button"
+        style="@style/button_skip_tutorial"
         android:text="Layout Weight"
         android:onClick="layoutWeight"
         android:layout_width="wrap_content"

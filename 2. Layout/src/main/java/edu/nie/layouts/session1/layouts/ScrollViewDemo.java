@@ -1,4 +1,4 @@
-package edu.nie.layouts.session1.basic_layouts;
+package edu.nie.layouts.session1.layouts;
 
 import android.content.Intent;
 import android.os.Bundle;

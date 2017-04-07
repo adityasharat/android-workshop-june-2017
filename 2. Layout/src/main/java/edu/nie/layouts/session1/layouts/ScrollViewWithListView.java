@@ -1,4 +1,4 @@
-package edu.nie.layouts.session1.basic_layouts;
+package edu.nie.layouts.session1.layouts;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

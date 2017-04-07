@@ -7,7 +7,7 @@ import android.view.View;
 
 import edu.nie.layouts.R;
 import edu.nie.layouts.demo.Demo;
-import edu.nie.layouts.session1.basic_layouts.BasicLayouts;
+import edu.nie.layouts.session1.layouts.BasicLayouts;
 
 public class Session1 extends AppCompatActivity {
 
