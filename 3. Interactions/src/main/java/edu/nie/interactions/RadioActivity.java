@@ -2,8 +2,6 @@ package edu.nie.interactions;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -20,17 +18,17 @@ public class RadioActivity extends AppCompatActivity {
 
 //        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout1) ;
 
-        RadioGroup group = (RadioGroup) findViewById(R.id.radiogroup) ;
+        RadioGroup group = (RadioGroup) findViewById(R.id.radiogroup);
 
         group.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 // find which radio button is selected
-                if(checkedId == R.id.yes) {
+                if (checkedId == R.id.yes) {
                     Toast.makeText(getApplicationContext(), "choice: Yes",
                             Toast.LENGTH_SHORT).show();
-                } else if(checkedId == R.id.no) {
+                } else if (checkedId == R.id.no) {
                     Toast.makeText(getApplicationContext(), "choice: No",
                             Toast.LENGTH_SHORT).show();
                 } else {
@@ -49,9 +47,9 @@ public class RadioActivity extends AppCompatActivity {
         int selectedId = group.getCheckedRadioButtonId();
 
         // find which radioButton is checked by id
-        if(selectedId == yes.getId()) {
+        if (selectedId == yes.getId()) {
             textView.setText("You chose 'Yes' option");
-        } else if(selectedId == no.getId()) {
+        } else if (selectedId == no.getId()) {
             textView.setText("You chose 'No' option");
         } else {
             textView.setText("You chose 'May Be' option");

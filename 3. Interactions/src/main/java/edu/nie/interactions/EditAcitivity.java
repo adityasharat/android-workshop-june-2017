@@ -16,15 +16,15 @@ public class EditAcitivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_default);
 
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout1) ;
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout1);
 
-        EditText editText = new EditText(getApplicationContext()) ;
+        EditText editText = new EditText(getApplicationContext());
         editText.setHint(getResources().getString(R.string.entername));
         editText.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         editText.setTextColor(Color.parseColor("#3333cc"));
         editText.setTextSize(25);
         editText.setTypeface(Typeface.SANS_SERIF);
-        editText.setInputType(InputType.TYPE_CLASS_TEXT |InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         linearLayout.addView(editText);
     }
 }

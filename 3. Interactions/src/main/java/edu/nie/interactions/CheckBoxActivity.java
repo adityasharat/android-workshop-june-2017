@@ -16,9 +16,9 @@ public class CheckBoxActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_default);
 
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout1) ;
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout1);
 
-        final CheckBox check = new CheckBox(getApplicationContext()) ;
+        final CheckBox check = new CheckBox(getApplicationContext());
 
         check.setText("Do you Agree for T & C??");
         check.setTextColor(Color.parseColor("#0000FF"));

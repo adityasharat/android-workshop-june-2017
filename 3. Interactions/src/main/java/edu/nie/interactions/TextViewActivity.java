@@ -14,7 +14,7 @@ public class TextViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_default);
 
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout1) ;
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout1);
 
         TextView textView = new TextView(getApplicationContext());
 //                (TextView) findViewById(R.id.textView);

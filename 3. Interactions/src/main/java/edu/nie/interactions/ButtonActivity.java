@@ -11,29 +11,30 @@ import android.widget.TextView;
 
 public class ButtonActivity extends AppCompatActivity {
 
-    int count = 0 ;
+    int count = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_default);
 
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout1) ;
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout1);
 
-        final TextView textView = new TextView(getApplicationContext()) ;
+        final TextView textView = new TextView(getApplicationContext());
         textView.setText(String.valueOf(count));
         textView.setTextColor(Color.parseColor("#00FFFF"));
         textView.setGravity(Gravity.CENTER_HORIZONTAL);
         textView.setTextScaleX(3.0f);
         textView.setMinHeight(50);
         linearLayout.addView(textView);
-        Button button = new Button(getApplicationContext()) ;
+        Button button = new Button(getApplicationContext());
 
         button.setText("Click to add 1");
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                count++ ;
+                count++;
                 textView.setText(String.valueOf(count));
             }
         });

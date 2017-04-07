@@ -15,9 +15,9 @@ public class ToggleButtonAcitivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_default);
 
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout1) ;
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout1);
 
-        final ToggleButton button = new ToggleButton(getApplicationContext()) ;
+        final ToggleButton button = new ToggleButton(getApplicationContext());
         button.setChecked(true);
 
         button.setTextOff("I am OFF");
@@ -27,7 +27,7 @@ public class ToggleButtonAcitivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Toggle Button", (button.isChecked()?"I am ON": "I am OFF")) ;
+                Log.d("Toggle Button", (button.isChecked() ? "I am ON" : "I am OFF"));
             }
         });
 
