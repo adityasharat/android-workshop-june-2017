@@ -21,6 +21,16 @@
             android:text="Mostly Used View Groups"/>
 
         <Button
+            android:id="@+id/frame_layout"
+            style="@style/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:onClick="showFrameLayout"
+            android:text="Frame Layout"/>
+
+        <Button
             android:id="@+id/linear_layout_button"
             style="@style/button"
             android:layout_width="wrap_content"
@@ -58,15 +68,5 @@
             android:layout_marginTop="20dp"
             android:onClick="showScrollLayout"
             android:text="Scroll Layout"/>
-
-        <Button
-            android:id="@+id/frame_layout"
-            style="@style/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:onClick="showFrameLayout"
-            android:text="Frame Layout"/>
     </LinearLayout>
 </ScrollView>
