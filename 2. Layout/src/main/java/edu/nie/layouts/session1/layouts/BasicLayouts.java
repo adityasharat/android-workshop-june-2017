@@ -17,11 +17,7 @@ public class BasicLayouts extends AppCompatActivity {
     }
 
     public void showLinearHorizontalLayout(View view) {
-        Demo.start(this, R.layout.linear_horizontal);
-    }
-
-    public void showLinearVerticalLayout(View view) {
-        Demo.start(this, R.layout.linear_vertical);
+        Demo.start(this, R.layout.linear_layout_example);
     }
 
     public void showTableLayout(View view) {

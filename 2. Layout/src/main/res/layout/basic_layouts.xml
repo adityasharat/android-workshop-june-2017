@@ -18,26 +18,16 @@
             style="@style/heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mostly Used View Groups.."/>
+            android:text="Mostly Used View Groups"/>
 
         <Button
-            android:id="@+id/linear_horizontal"
+            android:id="@+id/linear_layout_button"
             style="@style/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:onClick="showLinearHorizontalLayout"
-            android:text="Linear Layout (Horizontal)"/>
-
-        <Button
-            android:id="@+id/linear_vertical"
-            style="@style/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:onClick="showLinearVerticalLayout"
-            android:text="Linear Layout (Vertical)"/>
+            android:text="Linear Layout"/>
 
         <Button
             android:id="@+id/table_layout"

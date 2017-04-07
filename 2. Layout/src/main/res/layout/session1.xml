@@ -40,13 +40,6 @@
         android:text="Padding Vs Margin"/>
 
     <Button
-        style="@style/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="basicLayouts"
-        android:text="Basic Layouts"/>
-
-    <Button
         style="@style/button_skip_tutorial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,4 +52,12 @@
         android:layout_height="wrap_content"
         android:onClick="layoutWeight"
         android:text="Layout Weight"/>
+
+    <Button
+        style="@style/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="basicLayouts"
+        android:text="Basic Layouts"/>
+
 </LinearLayout>
