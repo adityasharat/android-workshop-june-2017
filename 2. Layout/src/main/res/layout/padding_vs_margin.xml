@@ -8,15 +8,15 @@
 
     <Button
         style="@style/button"
-        android:text="Padding"
-        android:onClick="padding"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:onClick="padding"
+        android:text="Padding"/>
 
     <Button
         style="@style/button"
-        android:text="Margin"
-        android:onClick="margin"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:onClick="margin"
+        android:text="Margin"/>
 </LinearLayout>

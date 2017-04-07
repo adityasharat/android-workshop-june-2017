@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <Button
         style="@style/button"
-        android:text="Transparency (Alpha)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="fadeIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="Transparency (Alpha)"/>
 
     <Button
         style="@style/button"
-        android:text="Move (Translate)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="bounce"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="Move (Translate)"/>
 
     <Button
         style="@style/button"
-        android:text="Scale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="scale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="Scale"/>
 
     <Button
         style="@style/button"
-        android:text="Rotate"
-        android:onClick="rotate"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:onClick="rotate"
+        android:text="Rotate"/>
 </LinearLayout>

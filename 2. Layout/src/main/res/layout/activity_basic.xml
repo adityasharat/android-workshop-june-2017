@@ -17,60 +17,59 @@
 
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="edu.nie.layouts.MainActivity">
 
     <TextView
+        android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hi I am a TextView!!"
-        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/textview"
-        android:textSize="24sp"
+        android:layout_alignParentStart="true"
         android:padding="5dp"
+        android:text="Hi I am a TextView!!"
+        android:textSize="24sp"
         />
 
     <EditText
+        android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textview"
-        android:id="@+id/editText"
-        android:text="Type something here..."
         android:padding="5dp"
+        android:text="Type something here..."
         android:textSize="24sp"/>
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hi I am Button"
-        android:padding="5dp"
-        android:textSize="20sp"
         android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:padding="5dp"
+        android:text="Hi I am Button"
+        android:textSize="20sp"/>
 
     <ToggleButton
         android:id="@+id/toggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/button"
-        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
         android:padding="5dp"
-        android:textOn="Turn me off."
         android:textOff="Turn me On"
+        android:textOn="Turn me off."
+        android:textSize="20sp"
         />
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/toggleButton"
+        android:layout_centerHorizontal="true"
         android:padding="5dp"
         android:text="Check me On / Off"
         android:textSize="24sp"/>
@@ -83,8 +82,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:padding="5dp"
-        android:textSize="20sp"
-        android:text="You can select only one at a time" />
+        android:text="You can select only one at a time"
+        android:textSize="20sp"/>
 
     <Spinner
         android:id="@+id/spinner"
@@ -94,7 +93,7 @@
         android:layout_below="@id/radioButton"
         android:layout_centerVertical="true"
         android:entries="@array/planets_array"
-        android:padding="5dp" />
+        android:padding="5dp"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -102,9 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/spinner"
-        android:layout_centerHorizontal="true" />
-
-
+        android:layout_centerHorizontal="true"/>
 
 
 </RelativeLayout>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/textViewTitle"
@@ -10,18 +11,18 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="12dp"
         android:layout_marginTop="11dp"
-        android:text="@string/title" />
+        android:text="@string/title"/>
 
     <EditText
         android:id="@+id/editTextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/enterTitle"
-        android:layout_below="@+id/textViewTitle"
+        android:layout_alignParentEnd="true"
         android:layout_alignStart="@+id/textViewTitle"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/textViewTitle"
+        android:ems="10"
+        android:hint="@string/enterTitle"
+        android:inputType="textPersonName"/>
 
     <TextView
         android:id="@+id/textViewDesc"
@@ -29,27 +30,27 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/editTextTitle"
         android:layout_below="@+id/editTextTitle"
-        android:text="@string/description" />
+        android:text="@string/description"/>
 
     <EditText
         android:id="@+id/editTextDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_alignStart="@+id/textViewDesc"
         android:layout_below="@+id/textViewDesc"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="@string/enterDescription"
-        android:layout_alignParentEnd="true" />
+        android:inputType="textPersonName"/>
 
     <TextView
         android:id="@+id/textViewDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/editTextDesc"
-        android:layout_centerVertical="true"
         android:layout_below="@+id/editTextDesc"
-        android:text="@string/date" />
+        android:layout_centerVertical="true"
+        android:text="@string/date"/>
 
     <EditText
         android:id="@+id/editTextDate"
@@ -57,36 +58,35 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/editTextDesc"
-        android:ems="10"
         android:layout_toEndOf="@+id/textViewDate"
-        android:inputType="date" />
+        android:ems="10"
+        android:inputType="date"/>
 
     <TextView
+        android:id="@+id/textviewAmt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/textViewDate"
         android:layout_below="@id/editTextDate"
-        android:text="@string/amount"
-        android:id="@+id/textviewAmt"/>
+        android:text="@string/amount"/>
 
     <EditText
+        android:id="@+id/editTextAmt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@id/editTextDate"
-        android:minWidth="150dp"
-        android:id="@+id/editTextAmt"/>
+        android:minWidth="150dp"/>
 
 
     <Spinner
+        android:id="@+id/spnAmt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:entries="@array/currency"
         android:layout_below="@id/editTextDate"
         android:layout_toEndOf="@id/textviewAmt"
         android:layout_toStartOf="@+id/editTextAmt"
-        android:id="@+id/spnAmt"/>
-
+        android:entries="@array/currency"/>
 
 
 </RelativeLayout>

@@ -4,59 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     tools:context=".session2.Session2">
 
     <Button
         style="@style/button"
-        android:text="Pull To Refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="pullToRefresh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="Pull To Refresh"/>
 
     <Button
         style="@style/button"
-        android:text="Floating Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="floatingButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="Floating Button"/>
 
     <Button
         style="@style/button"
-        android:text="Drag And Drop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="dragAndDrop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="Drag And Drop"/>
 
     <Button
         style="@style/button"
-        android:text="Draggable View"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="draggableView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="Draggable View"/>
 
     <Button
         style="@style/button"
-        android:text="Sticky Header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="stickyHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="Sticky Header"/>
 
     <Button
         style="@style/button"
-        android:text="Custom Animation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="customAnimation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="Custom Animation"/>
 
     <Button
         style="@style/button"
-        android:text="Activity Transition"
-        android:onClick="activityTransition"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:onClick="activityTransition"
+        android:text="Activity Transition"/>
 </LinearLayout>

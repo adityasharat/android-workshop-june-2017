@@ -51,11 +51,11 @@
 
     <Button
         style="@style/floating_button"
-        android:text="Floating Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_marginBottom="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="Floating Button"/>
 
 </FrameLayout>

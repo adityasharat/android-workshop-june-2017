@@ -4,52 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     tools:context=".session1.Session1">
 
     <Button
         style="@style/button"
-        android:text="px, dp and sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="dPSpAndPixel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="px, dp and sp"/>
 
     <Button
         style="@style/button"
-        android:text="View and ViewGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="viewAndViewGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="View and ViewGroup"/>
 
     <Button
         style="@style/button"
-        android:text="Basic Layouts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="basicLayouts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="Basic Layouts"/>
 
     <Button
         style="@style/button"
-        android:text="Padding Vs Margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="paddingVsMargin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="Padding Vs Margin"/>
 
     <Button
         style="@style/button_skip_tutorial"
-        android:text="Gravity And Layout Gravity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="gravityAndLayoutGravity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="Gravity And Layout Gravity"/>
 
     <Button
         style="@style/button_skip_tutorial"
-        android:text="Layout Weight"
-        android:onClick="layoutWeight"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:onClick="layoutWeight"
+        android:text="Layout Weight"/>
 </LinearLayout>

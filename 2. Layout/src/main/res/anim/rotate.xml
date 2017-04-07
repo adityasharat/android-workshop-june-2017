@@ -3,32 +3,32 @@
      android:fillAfter="true">
 
     <rotate
-        android:startOffset="0"
         android:duration="500"
         android:fromDegrees="0"
         android:pivotX="50%"
         android:pivotY="50%"
         android:repeatCount="1"
         android:repeatMode="reverse"
+        android:startOffset="0"
         android:toDegrees="15"/>
 
     <rotate
-        android:startOffset="500"
         android:duration="200"
         android:fromDegrees="0"
         android:pivotX="50%"
         android:pivotY="50%"
         android:repeatCount="1"
         android:repeatMode="reverse"
+        android:startOffset="500"
         android:toDegrees="-15"/>
 
     <rotate
-        android:startOffset="1000"
         android:duration="500"
         android:fromDegrees="0"
         android:pivotX="50%"
         android:pivotY="50%"
         android:repeatCount="1"
         android:repeatMode="reverse"
+        android:startOffset="1000"
         android:toDegrees="360"/>
 </set>

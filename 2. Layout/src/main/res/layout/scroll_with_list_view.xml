@@ -7,9 +7,9 @@
 
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:fillViewport="false"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="false">
 
         <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -23,34 +23,34 @@
 
             <ListView
                 android:id="@+id/list_view"
-                android:entries="@array/dummy_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:entries="@array/dummy_list"/>
 
             <TextView
-                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:textSize="100dp"
                 android:background="@color/colorPrimary"
+                android:gravity="center"
                 android:text="View 1"
-                android:textColor="@color/primary_dark_material_dark"/>
+                android:textColor="@color/primary_dark_material_dark"
+                android:textSize="100dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:textSize="100dp"
                 android:background="@color/colorAccent"
                 android:text="View 2"
-                android:textColor="@color/primary_dark_material_dark"/>
+                android:textColor="@color/primary_dark_material_dark"
+                android:textSize="100dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:textSize="100dp"
                 android:background="@color/colorPrimary"
                 android:text="View 3"
-                android:textColor="@color/primary_dark_material_dark"/>
+                android:textColor="@color/primary_dark_material_dark"
+                android:textSize="100dp"/>
 
         </LinearLayout>
     </ScrollView>

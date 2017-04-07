@@ -20,7 +20,7 @@
             style="@style/heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="dpi - Dots Per Inch"/>
+            android:text="DPI - Dots Per Inch"/>
 
         <TextView
             style="@style/description"
@@ -32,7 +32,8 @@
             style="@style/heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Types of dpi"/>
+            android:layout_marginTop="8dp"
+            android:text="Types of DPI"/>
 
         <TextView
             style="@style/description"
@@ -67,18 +68,18 @@
             style="@style/heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Calculate number of pixels in dpi"/>
+            android:text="Calculate pixels using DPI"/>
 
         <ImageView
-            android:src="@mipmap/number_of_pixels_in_each_dpi"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:src="@mipmap/number_of_pixels_in_each_dpi"/>
 
         <TextView
             style="@style/heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="with and without dp"/>
+            android:text="With and Without DP"/>
 
         <ImageView
             android:layout_width="wrap_content"
