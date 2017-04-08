@@ -87,19 +87,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startSuperComplexTaskInBackground(final View button, final TextView statusView) {
-        new AsyncTask<Void, Void, Void>() {
+
+        AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+
+            // This is the actual stuff that is running in the
+            // background. Please do not modify any views here
+            // if you do that, the app will crash.
             @Override
             protected Void doInBackground(Void... params) {
                 startSuperComplexTask();
                 return null;
             }
 
+
+            // This method is call after the `doInBackground` is done
+            // This is called on the main thread. So you can modify the views here
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
                 button.setEnabled(true);
                 statusView.setText("Completed !");
             }
-        }.execute();
+        };
+
+        // actually starts the task you defined above.
+        task.execute();
     }
 }
