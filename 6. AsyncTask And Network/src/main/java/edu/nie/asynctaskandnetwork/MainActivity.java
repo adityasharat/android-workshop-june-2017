@@ -1,5 +1,6 @@
 package edu.nie.asynctaskandnetwork;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -48,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
                     v.setEnabled(true);
                     statusView.setText("Completed !");
                 }
-
             }
         });
 
@@ -60,6 +60,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        View nextButton = findViewById(R.id.next_section);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ServerActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void startSuperComplexTask() {
