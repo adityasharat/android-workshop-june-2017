@@ -47,9 +47,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        int number = data.getIntExtra(KEY_RESULT, 0);
-        numbers.add(number);
-        addView(number);
+        if (data != null) {
+            int number = data.getIntExtra(KEY_RESULT, 0);
+            numbers.add(number);
+            addView(number);
+        }
     }
 
     private void addView(int number) {

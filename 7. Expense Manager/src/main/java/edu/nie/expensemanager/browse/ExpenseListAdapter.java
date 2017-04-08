@@ -141,7 +141,7 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
 
         private void bind(@NonNull Expense expense) {
             this.expense = expense;
-            title.setText(expense.description);
+            title.setText(expense.title);
             amt.setText("₹ " + String.valueOf((int) expense.amount));
             date.setText(Utils.toDateString(expense.date, null));
         }
