@@ -1,1 +1,1 @@
-# Projects for NIE Android Workshop (April 2017)
+# Android Workshop (June 2017)
