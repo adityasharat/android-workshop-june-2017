@@ -26,31 +26,13 @@ public class ServerActivity extends AppCompatActivity {
         setup();
         setContentView(R.layout.activity_server);
 
-        // create a variable named `get` which is of type View. Assign
-        // the value of `get` to whatever is returned by the method `findViewById`.
-        //
-        // Just like
-        //          int i = someMethod();
-        // in C++
         View get = findViewById(R.id.get);
 
-        // `get` which is a `View` has a method `setOnClickListener`
-        // like public methods in C++/JAVA classes. This method takes in
-        // 1 argument, an object of type `View.OnClickListener`. So whenever
-        // the `get` view is clicked by the user, The Android OS will call
-        // the `onClick` method of this object.
-        // It is a callback, take whatever action you want inside the `onClick`
-        // method.
+
         get.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View button) {
-                // First find the input edit text view and get the text set on it.
                 String url = ((EditText) findViewById(R.id.input)).getText().toString();
-                // break up of the above statement
-                // View temp1 = ((EditText) findViewById(R.id.input)) -> get a view
-                // Editable temp2 = temp1.getText() -> returns a type(class) Editable
-                // String url = temp2.toString() -> return the text inside the Editable object
-
 
                 // check if the user has entered something
                 // by simply checking if the length of the
@@ -147,15 +129,15 @@ public class ServerActivity extends AppCompatActivity {
         return server.get(url).execute().body().string();
     }
 
-    public interface Server {
-        @GET
-        Call<ResponseBody> get(@Url String url);
-    }
-
     private void setup() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://10.0.2.2:8080/")
                 .build();
         server = retrofit.create(Server.class);
+    }
+
+    public interface Server {
+        @GET
+        Call<ResponseBody> get(@Url String url);
     }
 }
