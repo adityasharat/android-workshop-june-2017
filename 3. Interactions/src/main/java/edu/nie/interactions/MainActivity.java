@@ -1,15 +1,12 @@
 package edu.nie.interactions;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-
-import java.util.ArrayList;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,48 +16,37 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout1);
+        // another way to set the content view
+        //ViewGroup container = (ViewGroup) getLayoutInflater().inflate(R.layout.activity_main, null, false);
+        //setContentView(container);
 
-        ListView listView = (ListView) findViewById(R.id.listview);
+        // simple example
+        Button btnSample = (Button) findViewById(R.id.btnSample);
 
-        ArrayList<String> listActivities = new ArrayList<>();
-
-        listActivities.add("Text View activity");
-        listActivities.add("Edit View activity");
-        listActivities.add("Button View activity");
-        listActivities.add("Toggle Button activity");
-        listActivities.add("Check Box activity");
-        listActivities.add("Radio Button activity");
-
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listActivities);
-
-        listView.setAdapter(adapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        // react to click of the button
+        btnSample.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0:
-                        startActivity(new Intent(getApplicationContext(), TextViewActivity.class));
-                        break;
-                    case 1:
-                        startActivity(new Intent(getApplicationContext(), EditAcitivity.class));
-                        break;
-                    case 2:
-                        startActivity(new Intent(getApplicationContext(), ButtonActivity.class));
-                        break;
-                    case 3:
-                        startActivity(new Intent(getApplicationContext(), ToggleButtonAcitivity.class));
-                        break;
-                    case 4:
-                        startActivity(new Intent(getApplicationContext(), CheckBoxActivity.class));
-                        break;
-                    case 5:
-                        startActivity(new Intent(getApplicationContext(), RadioActivity.class));
-                        break;
-                }
+            public void onClick(View v) {
+                System.out.println("button was clicked");
             }
         });
+
+        //renderItems(container);
+    }
+
+    void renderItems(ViewGroup container) {
+        TextView tv = new TextView(container.getContext());
+        tv.setText("Some Text in a Text View");
+        container.addView(tv);
+
+        CheckBox cb = new CheckBox(container.getContext());
+        cb.setText("A Check Box");
+        container.addView(cb);
+
+        Button btn = new Button(container.getContext());
+        btn.setText("This is a Button");
+        container.addView(btn);
+
 
     }
 }

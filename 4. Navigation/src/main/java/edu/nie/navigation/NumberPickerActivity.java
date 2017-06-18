@@ -1,6 +1,5 @@
 package edu.nie.navigation;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +12,7 @@ public class NumberPickerActivity extends AppCompatActivity {
     public static final String KEY_NUMBER = "number";
 
     private int number = 0;
+    boolean isEdit = false;
     private EditText picker;
 
     @Override
@@ -24,6 +24,7 @@ public class NumberPickerActivity extends AppCompatActivity {
 
         picker = (EditText) findViewById(R.id.number);
         if (this.number != -1) {
+            isEdit = true;
             picker.setText(String.valueOf(this.number));
         }
 
@@ -44,7 +45,8 @@ public class NumberPickerActivity extends AppCompatActivity {
 
     private void returnResult() {
         Intent resultIntent = new Intent();
-        resultIntent.putExtra(MainActivity.KEY_RESULT, number);
+        resultIntent.putExtra(MainActivity.KEY_RESULT_NUMBER, number);
+        resultIntent.putExtra(MainActivity.KEY_RESULT_WAS_EDIT, isEdit);
         setResult(AppCompatActivity.RESULT_OK, resultIntent);
         finish();
     }

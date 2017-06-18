@@ -6,13 +6,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/listview"
+    <EditText
+        android:id="@+id/etSample"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@color/colorPrimary"
-        android:dividerHeight="2dp">
+        android:layout_height="wrap_content"
+        android:hint="Type Something"/>
 
-    </ListView>
+    <Button
+        android:id="@+id/btnSample"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click Me"/>
+
 
 </LinearLayout>

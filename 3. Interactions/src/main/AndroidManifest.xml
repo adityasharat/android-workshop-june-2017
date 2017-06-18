@@ -16,12 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ButtonActivity"/>
-        <activity android:name=".EditAcitivity"/>
-        <activity android:name=".TextViewActivity"/>
-        <activity android:name=".ToggleButtonAcitivity"/>
-        <activity android:name=".CheckBoxActivity"/>
-        <activity android:name=".RadioActivity"/>
     </application>
 
 </manifest>
